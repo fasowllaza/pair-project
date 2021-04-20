@@ -1,0 +1,19 @@
+{
+  "name": "pair-project",
+  "version": "1.0.0",
+  "description": "pair project assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fasowllaza/pair-project.git"
+  },
+  "author": "Fakhreza Suparyadi, Valendrick Waleleng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fasowllaza/pair-project/issues"
+  },
+  "homepage": "https://github.com/fasowllaza/pair-project#readme"
+}
