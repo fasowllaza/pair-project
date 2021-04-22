@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
+     getAddress() {
+      return `${this.address}, Indonesia`
+    }
+
     static associate(models) {
       // define association here
       Customer.belongsToMany(models.Bundle, { through: models.Transaction })
@@ -23,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
     dateIn: DataTypes.DATEONLY,
     password: DataTypes.STRING
   }, {
+    hooks: {
+      beforeCreate: function(ins, opt) {
+        ins.noMobilePhone = ins.noMobilePhone.split('0').join('+62');
+      },
+      beforeUpdate: function(ins, opt) {
+        ins.noMobilePhone = ins.noMobilePhone.split('0').join('+62');
+      }
+    },
     sequelize,
     modelName: 'Customer',
   });

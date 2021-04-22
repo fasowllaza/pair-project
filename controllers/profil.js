@@ -4,11 +4,11 @@ class Controller{
     static showProfil(req, res){
         Customer.findAll({
             where:{
-                userName:'doditdatdit'
+                userName: 'doditdatdit'
             }
         })
         .then((data)=>{
-            console.log(data);
+            // console.log(data);
             res.render("profil",{data:data[0]})
         })
         .catch((err)=>{
@@ -18,4 +18,4 @@ class Controller{
     }
 }
 
-module.exports = Controller
+module.exports = Controller;

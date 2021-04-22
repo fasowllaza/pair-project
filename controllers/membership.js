@@ -10,9 +10,10 @@ class Controller{
         })
     }
     static showMembershipPost(req, res){
-        console.log(req.session.username);
+        // console.log(req.session.username);
         Bundle.findByPk(req.params.id)
         .then((data)=>{
+            // console.log(data);
             res.send(data)
         })
     }
