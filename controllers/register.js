@@ -4,7 +4,9 @@ const nodemailer = require('nodemailer');
 
 class Controller {
     static getRegister (req, res) {
+
         res.render('register')
+
     }
 
     static postRegister (req, res) {
