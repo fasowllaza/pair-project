@@ -1,4 +1,5 @@
-const {Bundle} = require("../models")
+
+const {Bundle, Customer, Transaction} = require("../models")
 
 class Controller{
 
@@ -10,10 +11,22 @@ class Controller{
         })
     }
     static showMembershipPost(req, res){
-        console.log(req.session.username);
-        Bundle.findByPk(req.params.id)
+        let CustomerId
+        let BundleId = req.params.id
+        Customer.findAll({
+            where:{
+                userName:req.session.username
+            }
+        })
         .then((data)=>{
-            res.send(data)
+            CustomerId = data[0].id
+            return Transaction.create({
+                BundleId:BundleId,
+                CustomerId:CustomerId,
+            })
+        })
+        .then(()=>{
+            res.redirect("/profile")
         })
     }
 }

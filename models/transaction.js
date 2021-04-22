@@ -20,6 +20,22 @@ module.exports = (sequelize, DataTypes) => {
     BundleId: DataTypes.INTEGER
   }, {
     sequelize,
+    hooks:{
+      beforeCreate:(instance, option)=>{
+        console.log(instance);
+        console.log("here <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        if (+instance.BundleId === 1){
+          instance.quantity = 5
+        }
+        else if (+instance.BundleId === 2){
+          instance.quantity = 10
+        }
+        else if (+instance.BundleId === 3){
+          instance.quantity = 15
+        }
+        instance.statusOrder = false
+      }
+    },
     modelName: 'Transaction',
   });
   return Transaction;

@@ -21,6 +21,8 @@ app.use(session({
 
 
 
+
+
 app.use("/homepage", homepageRoutes)
 app.use("/login", loginRoutes)
 app.use("/register", registerRoutes)
@@ -33,6 +35,7 @@ app.get("/logout", function (req, res){
     req.session.destroy()
     res.redirect("/login")
 })
+app.use("/", (req, res)=>{res.redirect("/homepage")})
 
 
 

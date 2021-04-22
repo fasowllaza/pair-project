@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Bundle.belongsToMany(models.Customer, { through: models.Transaction })
     }
+    getName(str){
+      return `${this.name} ${str}`
+    }
   };
   Bundle.init({
     price: DataTypes.INTEGER,

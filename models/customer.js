@@ -4,6 +4,9 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
+    getAddress() {
+      return `${this.address}, Indonesia`
+    }
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -23,6 +26,14 @@ module.exports = (sequelize, DataTypes) => {
     dateIn: DataTypes.DATEONLY,
     password: DataTypes.STRING
   }, {
+    hooks: {
+      beforeCreate: function(ins, opt) {
+        ins.noMobilePhone = ins.noMobilePhone.split('0').join('+62');
+      },
+      beforeUpdate: function(ins, opt) {
+        ins.noMobilePhone = ins.noMobilePhone.split('0').join('+62');
+      }
+    },
     sequelize,
     modelName: 'Customer',
   });
