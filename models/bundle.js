@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    getName(str){
+      return `${this.name} ${str}`
+    }
+
     static associate(models) {
       // define association here
       Bundle.belongsToMany(models.Customer, { through: models.Transaction })
