@@ -59,6 +59,30 @@
   display: table;
   clear: both;
 }
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #db1f1f;
+  color: white;
+}
+</style>
 
 
 
@@ -66,28 +90,36 @@
             </style>
     </head>
 <body>
-    <%-include("partial/navbar")%>
-    <h1>INI PROFILE</h1>
+  <div class="topnav">
+    <a class="active" href="homepage">Home</a>
+    <a href="/register">Register</a>
+    <a href="/order">Order</a>
+    <a href="/membership">Membership</a>
+    <a href="/profile">Profile</a>
+    <a href="/login">Login</a>
+    <a href="/logout">Logout</a>
+  </div>
     <h2 style="text-align:center">User Profile Card</h2>
-
+    
 <div class="card">
-  <img src="https://cdn-radar.jawapos.com/uploads/radarkudus/news/2020/11/02/gambar-wajah-orang-berujung-uang_m_222402.jpg" alt="John" style="width:100%">
-  <h1><%=data.name%></h1>
-  <p class="title"><%=data.email%></p>
-  <p><%=data.address%></p>
+  <img src="https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg" alt="John" style="width:100%">
+  <h1><%=profile.name%></h1>
+  <p class="title"><%=profile.email%></p>
+  <p><%=profile.address%></p>
+  <a href="/profile/edit">Edit Profile</a><br></br>
+  <a href="/profile/delete/<%=profile.id%>">DeleteProfile</a>
+
 </div>
 <div class="row">
     <div class="column" style="background-color:#aaa;">
       <h2>Pending Laundry</h2>
-      <p>Some text..</p>
-    </div>
-    <div class="column" style="background-color:#bbb;">
-      <h2>Completed Laundry</h2>
-      <p>Some text..</p>
-    </div>
-    <div class="column" style="background-color:#ccc;">
-      <h2>Transaction History</h2>
-      <p>Some text..</p>
+      <%profile.Bundles.forEach((el)=>{%>
+        <form action="/profile/deleteTransaction/<%=el.id%>" method="GET">
+          <%if(!el.Transaction.statusOrder){%>
+            <div><p><%=el.name%> <%=el.price%> <input type="submit" value="Bayar"></p></div>
+          <%}%>
+        </form>
+      <%})%>
     </div>
   </div>
 </body>
