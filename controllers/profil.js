@@ -1,4 +1,5 @@
 const {Customer, Bundle, Transaction} = require("../models")
+const moneyFormatter = require("../helpers/moneyFormatter")
 
 class Controller{
     static showProfil(req, res){
@@ -13,7 +14,7 @@ class Controller{
         })
         .then((data)=>{
             profile = data[0]
-            res.render("profil",{profile})
+            res.render("profil",{profile, moneyFormatter})
         })
         .catch((err)=>{
             console.log(err);
