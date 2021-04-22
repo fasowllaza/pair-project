@@ -3,7 +3,9 @@ const bcrypt = require('bcryptjs');
 
 class Controller {
     static getRegister (req, res) {
-        res.render('Register')
+
+        res.render('register')
+
     }
 
     static postRegister (req, res) {
