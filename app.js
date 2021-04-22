@@ -11,6 +11,7 @@ const membershipRoutes = require("./routes/membership")
 const profilRoutes = require("./routes/profil")
 
 app.set("view engine", "ejs")
+
 app.use(express.urlencoded({extended:true}))
 app.use(session({
     secret:'test',
@@ -19,9 +20,11 @@ app.use(session({
 }))
 
 
+
 app.use("/homepage", homepageRoutes)
 app.use("/login", loginRoutes)
 app.use("/register", registerRoutes)
+
 app.use("/order", orderRoutes)
 app.use("/membership", membershipRoutes)
 app.use("/profile", profilRoutes)
@@ -30,6 +33,7 @@ app.get("/logout", function (req, res){
     req.session.destroy()
     res.redirect("/login")
 })
+
 
 
 
