@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/fasowllaza/pair-project/issues"
   },
-  "homepage": "https://github.com/fasowllaza/pair-project#readme"
+  "homepage": "https://github.com/fasowllaza/pair-project#readme",
+  "keywords": [],
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2"
+  }
 }
